@@ -1,0 +1,9 @@
+.home,.data,.sql,.alerts,.visuals,.notfound{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-size:48px;
+    height:90vh;
+  }
+  
+  

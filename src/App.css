@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +35,13 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.data,.sql,.alerts,.addpost,.home{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size:48px;
+  height:80vh;
 }
+

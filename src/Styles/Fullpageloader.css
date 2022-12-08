@@ -1,0 +1,46 @@
+/* * {
+  padding: 0;
+  margin: 0;
+}
+.sidebar {
+  background-color: #fff;
+  width: 180px;
+  height: 90vh;
+  background-color: aqua;
+  position: absolute;
+}
+
+
+ .listcontent{
+  display: flex;
+  padding: 15px;
+  letter-spacing: 1px;
+  transition: all 0.5s;
+}
+.listcontent:hover {
+  background-color:#fff;
+  padding: 15px;
+}
+
+.acontent {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+} */
+
+.fp-container{
+  position:fixed;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  background: #f8f8f8ad;
+
+}
+.fp-container  .fb-loader{
+  top:30%;
+  left:48%;
+  z-index:1000;
+  position: absolute;
+}
