@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { TableHeader, Pagination1, Search } from "../Datatable/Alloperation";
-import {  deletepoststart, loadPostsStart } from "../redux/actions";
+import { deletepoststart, loadPostsStart } from "../redux/actions";
 const Data = () => {
   // useEffect(() => {
   //   axios
@@ -16,9 +16,10 @@ const Data = () => {
   const dispatch = useDispatch();
   const { posts } = useSelector((state) => state.data);
   useEffect(() => {
-    if(posts.length==0){
-    dispatch(loadPostsStart());
-    console.log(posts);}
+    if (posts.length == 0) {
+      dispatch(loadPostsStart());
+      console.log(posts);
+    }
   }, []);
   const [TotalItems, setTotalItems] = useState(0);
   const [CurrentPage, setCurrentPage] = useState(1);
@@ -58,7 +59,7 @@ const Data = () => {
       (CurrentPage - 1) * ITEMS_PER_PAGE + ITEMS_PER_PAGE
     );
   }, [posts, CurrentPage, search, sorting]);
-  
+
   const handleDelete = (id, posts) => {
     if (window.confirm("Do you really want to delete the user")) {
       let updatedPost = posts;
@@ -98,43 +99,47 @@ const Data = () => {
                   onSorting={(field, order) => setSorting({ field, order })}
                 />
                 <tbody>
-                  {postsdata && postsdata.map((posts) => {
-                    if(!posts?.isDeleted){
-                      return(
-                        <tr>
-                      <td>{posts.userId}</td>
-                      <td>{posts.id}</td>
-                      <td>{posts.title}</td>
-                      <td>{posts.body}</td>
-                      <td>
-                        <div className="d-flex pt-3 ">
-                          <button type="button" className="m-1 btn btn-light"
-                          onClick ={() => handleDelete(posts.id,posts)}>
-                            <i 
-                            
-                            className="fa fa-trash"
-                             style={{ color: "red" }}></i>
-                          </button>
-                 <Link to={`/addpost/${posts.id}`}>
-                  <button type="button" className="m-1 btn btn-light">
-                            <i 
-                            class="fa fa-pen"
-                            ></i>
-                          </button>
-                     </Link>
-                     <button type="button" className="m-1 btn btn-light">
-                            <i 
-                            className="fa fa-eye"
-                            ></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                      );
-                    }
-                  }
-                )
-              }
+                  {postsdata &&
+                    postsdata.map((posts) => {
+                      if (!posts?.isDeleted) {
+                        return (
+                          <tr>
+                            <td>{posts.userId}</td>
+                            <td>{posts.id}</td>
+                            <td>{posts.title}</td>
+                            <td>{posts.body}</td>
+                            <td>
+                              <div className="d-flex pt-3 ">
+                                <button
+                                  type="button"
+                                  className="m-1 btn btn-light"
+                                  onClick={() => handleDelete(posts.id, posts)}
+                                >
+                                  <i
+                                    className="fa fa-trash"
+                                    style={{ color: "red" }}
+                                  ></i>
+                                </button>
+                                <Link to={`/addpost/${posts.id}`}>
+                                  <button
+                                    type="button"
+                                    className="m-1 btn btn-light"
+                                  >
+                                    <i class="fa fa-pen"></i>
+                                  </button>
+                                </Link>
+                                <button
+                                  type="button"
+                                  className="m-1 btn btn-light"
+                                >
+                                  <i className="fa fa-eye"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      }
+                    })}
                 </tbody>
               </table>
             </div>
