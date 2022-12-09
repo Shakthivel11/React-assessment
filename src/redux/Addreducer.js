@@ -10,7 +10,7 @@ const initialState = {
 const Addreducer = (state = initialState, action) => {
   switch (action.type) {
     case types.CREATE_POSTS_START:
-      console.log("current State",state)
+      console.log("Current State",state)
       return {
         ...state,
         posts : state.posts.push({...action.payload,createdOn:new Date()}),

@@ -19,6 +19,7 @@ function Headerrouter() {
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/data" element={<Data />} />
+        <Route path="/addpost/:id" element={ <AddPost/>} />
         <Route path="/addpost" element={ <AddPost/>} />
         <Route path="/recentpost" element={<Recentpost/>} />
         <Route path="/posthistory" element={<PostHistory/>} />

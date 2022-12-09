@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
 import "../Styles/Action.css";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { TableHeader, Pagination1, Search } from "../Datatable/Alloperation";
-import {  loadPostsStart } from "../redux/actions";
+import {  deletepoststart, loadPostsStart } from "../redux/actions";
 const Data = () => {
   // useEffect(() => {
   //   axios
@@ -58,7 +59,16 @@ const Data = () => {
     );
   }, [posts, CurrentPage, search, sorting]);
   
- 
+  const handleDelete = (id, posts) => {
+    if (window.confirm("Do you really want to delete the user")) {
+      let updatedPost = posts;
+      updatedPost["isDeleted"] = true;
+      updatedPost["updatedOn"] = new Date();
+      dispatch(deletepoststart(id, updatedPost));
+
+      alert("The user deleted successfully");
+    }
+  };
 
   return (
     <>
@@ -88,36 +98,43 @@ const Data = () => {
                   onSorting={(field, order) => setSorting({ field, order })}
                 />
                 <tbody>
-                  {postsdata && postsdata.map((post) => (
-                    <tr>
-                      {/* <th scope="row">{post.userId}</th> */}
-                      <td>{post.userId}</td>
-                      <td>{post.id}</td>
-                      <td>{post.title}</td>
-                      <td>{post.body}</td>
+                  {postsdata && postsdata.map((posts) => {
+                    if(!posts?.isDeleted){
+                      return(
+                        <tr>
+                      <td>{posts.userId}</td>
+                      <td>{posts.id}</td>
+                      <td>{posts.title}</td>
+                      <td>{posts.body}</td>
                       <td>
                         <div className="d-flex pt-3 ">
-                          <button type="button" className="m-1 btn btn-light">
+                          <button type="button" className="m-1 btn btn-light"
+                          onClick ={() => handleDelete(posts.id,posts)}>
                             <i 
-                            class="fa fa-trash"
+                            
+                            className="fa fa-trash"
                              style={{ color: "red" }}></i>
                           </button>
-
-                          <button type="button" className="m-1 btn btn-light">
+                 <Link to={`/addpost/${posts.id}`}>
+                  <button type="button" className="m-1 btn btn-light">
                             <i 
                             class="fa fa-pen"
                             ></i>
                           </button>
-
-                          <button type="button" className="m-1 btn btn-light">
+                     </Link>
+                     <button type="button" className="m-1 btn btn-light">
                             <i 
-                            class="fa fa-eye"
+                            className="fa fa-eye"
                             ></i>
                           </button>
                         </div>
                       </td>
                     </tr>
-                  ))}
+                      );
+                    }
+                  }
+                )
+              }
                 </tbody>
               </table>
             </div>

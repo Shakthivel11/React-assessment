@@ -3,7 +3,7 @@ import "../Styles/Addpost.css";
 import { useNavigate,useParams } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import {
-  addpost, updatepoststart
+  addpost, updatepost
 } from "../redux/actions";
 const initialState = {
   userId: "",
@@ -45,7 +45,7 @@ function AddPost() {
 
       }
       else{
-        dispatch(updatepoststart({id,formValue}));
+        dispatch(updatepost(formValue));
         setEditMode(false);
         alert("Post added successfully");
         setTimeout(()=> navigate("/data"),500);

@@ -16,18 +16,18 @@ const PostHistory = () => {
             <table className="table table-bordered">
               <thead>
                 <tr className="table-striped">
-                  <td>USERID</td>
-                  <td>ID</td>
-                  <td>TITLE</td>
-                  <td>BODY</td>
-                  <td>ACTIONS</td>
+                  <td>UserId</td>
+                  <td>Id</td>
+                  <td>Title</td>
+                  <td>Body</td>
+                  <td>Actions</td>
                   <td>Date</td>
                 </tr>
               </thead>
 
               <tbody>
                 {historyposts &&
-                  historyposts.map((historyposts, i) => {
+                 [...historyposts] .reverse().map((historyposts, i) => {
                     return (
                       <tr key={i}>
                         <td>{historyposts.userId}</td>

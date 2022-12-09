@@ -46,6 +46,26 @@ export const updatepost =(payload)=>({
     type:types.UPDATE_POSTS_ERROR,
     payload:error,
  })
+
+ export const deletepostsuccess=(id)=>({
+    type:types.DELETE_POSTS_SUCCESS,
+    payload:id,
+ })
+ 
+ export const deletepoststart=(id,posts)=>({
+    type:types.DELETE_POSTS_START,
+    payload:posts
+ })
+ 
+ export const deleteposterr=()=>({
+    type:types.DELETE_POSTS_ERROR,
+
+ })
+ 
+ export const deletepost=(id)=>({
+    type:types.DELETE_POST,
+    payload:id,
+ })
  export const postHistoryStart=()=>({
     type:types.POST_HISTORY_START
  })

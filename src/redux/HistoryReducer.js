@@ -15,7 +15,7 @@ const historyReducer = (state = initialState, action) => {
       };
 
     case types.POST_HISTORY_SUCCESS:
-      console.log("Post hisory payload",action.data)
+      console.log("Post history",action.data)
       return {
         ...state,
         historyposts: [...state.historyposts,{...action.data}],    
